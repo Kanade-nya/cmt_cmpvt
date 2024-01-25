@@ -8,7 +8,7 @@ from torchvision.datasets.folder import ImageFolder, default_loader
 
 from timm.data.constants import IMAGENET_DEFAULT_MEAN, IMAGENET_DEFAULT_STD
 from timm.data import create_transform
-from mcloader import ClassificationDataset, flowers
+from mcloader import ClassificationDataset, flowers,chaoyang
 from mcloader.tiny_imagenet import TinyImageNet
 
 
@@ -97,6 +97,14 @@ def build_dataset(is_train, args):
             split = 'test'
         # dataset = datasets.Flowers102(args.data_path,split=split,transform=transform)
         dataset = flowers.Flowers(args.data_path, split=split, transform=transform)
+        nb_classes = dataset.nb_classes
+
+    elif args.data_set == 'CHAOYANG':
+        if is_train:
+            split = 'train'
+        else:
+            split = 'test'
+        dataset = chaoyang.Chaoyang(args.data_path, split=split, transform=transform)
         nb_classes = dataset.nb_classes
 
     return dataset, nb_classes
