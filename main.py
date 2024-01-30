@@ -38,7 +38,7 @@ from models.v3_shunted import v3_shunted
 from models.v4_shunted import v4_shunted
 from models.v5_shunted import v5_shunted_light, v5_shunted
 from models.coat_v1 import coat_v1
-
+from models.v5_max import v5_max
 def get_args_parser():
     parser = argparse.ArgumentParser('PVT training and evaluation script', add_help=False)
     parser.add_argument('--fp32-resume', action='store_true', default=False)
